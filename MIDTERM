@@ -1,6 +1,55 @@
+1
+   public int longestPalindrome(String s) {
+        HashMap<Character,Integer>map = new HashMap<Character,Integer>();
+    	int result = 0;
+    	boolean onemore = false;
+    	for (int i=0; i<s.length(); i++) {
+    		if (map.containsKey(s.charAt(i))) {
+    			map.put(s.charAt(i), map.get(s.charAt(i))+1);
+    		} else {
+    			map.put(s.charAt(i), 1);
+    		}
+    	}
+    	for (int number : map.values()) {
+    		if (number%2==0) {
+    			result = result + number;
+    		} else {
+    			result = result + number - 1;
+    			onemore = true;
+    		}
+    	}
+    	result = (onemore==true) ? (result+1) : result;
+		return result;
+   }
 
-BONUS
-public int twoSum(int[]nums, int target) {
+2
+   public int maxProfit(int[] prices) {
+        int profit = 0;
+        int maxprofit = 0;
+        for (int i=0;i<prices.length-1;i++) {
+            profit = prices[i+1]-prices[i];
+            if (profit>0) {
+                maxprofit = maxprofit + profit;
+            }
+        }
+        
+        return maxprofit;
+   }
+
+3
+   public String convertToTitle(int n) {
+        char[] result = new char[20];
+		int index = 20;
+		n--;
+		do {
+			result[--index] = (char) ('A' + n % 26);
+			n = n / 26 - 1;
+		} while (n >= 0);
+		return new String(result, index, 20 - index);
+    }
+    
+BONUS O(2n)
+   public int twoSum(int[]nums, int target) {
     	HashMap<Integer,Integer>map = new HashMap<Integer,Integer>();
     	int count = 0;
     	for (int num : nums) {
@@ -14,4 +63,4 @@ public int twoSum(int[]nums, int target) {
     	}
     	count = count/2;
     	return count;
-}
+   }
