@@ -47,6 +47,9 @@
 		} while (n >= 0);
 		return new String(result, index, 20 - index);
     }
+// Please READ the problem description CAREFULLY.
+// This problem is about to change excel title to numbers, not numbers to title
+// -10;
     
 BONUS O(2n)
    public int twoSum(int[]nums, int target) {
@@ -57,8 +60,8 @@ BONUS O(2n)
     	}
     	for (int num : nums) {
     		int newtarget = target - num;
-    		if (map.containsKey(newtarget) && map.get(newtarget) != newtarget) {
-    			count++;
+    		if (map.containsKey(newtarget) && map.get(newtarget) != newtarget) {	// here should be: map.get(newtarget) != num
+    			count++;							// -2;
     		}
     	}
     	count = count/2;
